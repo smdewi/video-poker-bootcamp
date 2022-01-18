@@ -69,8 +69,16 @@ h1 {
 
 .right-bet-container {
   height: 40px;
-  width: 100px;
+  width: 50px;
   border-style: solid;
   border-color: black;
   display: inline-block;
+}
+
+.bet-button {
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 50%;
 }
