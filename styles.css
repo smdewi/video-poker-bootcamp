@@ -51,10 +51,17 @@ h1 {
   margin: 10px auto;
 }
 
-.start-button {
+.deal-button {
   margin: auto;
   height: fit-content;
   width: fit-content;
   padding: 10px;
   border-radius: 25%;
+}
+
+.left-bet-container {
+  height: 40px;
+  width: 100px;
+  border-style: solid;
+  border-color: black;
 }
