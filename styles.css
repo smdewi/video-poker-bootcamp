@@ -21,9 +21,34 @@ h1 {
 
 .player-hand {
   height: 150px;
-  width: 300px;
-  background-color: white;
+  width: fit-content;
+  background-color: rgb(8, 112, 60);
   margin: 15px auto;
+}
+
+.cardEl {
+  padding: 10px;
+  margin: 10px;
+  background-image: linear-gradient(#08bef5, #bcd5f6);
+  border-radius: 5px;
+  display: inline-block;
+  height: 75px;
+  width: 50px;
+  vertical-align: top;
+}
+
+.middle-table {
+  height: 40px;
+  width: 75%;
+  background-color: white;
+  margin: 10px auto;
+}
+
+.bottom-table {
+  height: 40px;
+  width: 75%;
+  background-color: white;
+  margin: 10px auto;
 }
 
 .start-button {
