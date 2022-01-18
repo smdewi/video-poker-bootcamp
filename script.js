@@ -55,6 +55,15 @@ const initGame = () => {
   leftBetContainer.classList.add('left-bet-container');
   placeBetContainer.appendChild(leftBetContainer);
 
+  const rightBetContainer = document.createElement('div');
+  rightBetContainer.classList.add('right-bet-container');
+  placeBetContainer.appendChild(rightBetContainer);
+
+  const placeBetButton = document.createElement('button');
+  placeBetButton.classList.add('bet-button');
+  placeBetButton.innerText = "Bet";
+  rightBetContainer.appendChild(placeBetButton);
+
 
 };
 
