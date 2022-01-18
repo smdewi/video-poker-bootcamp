@@ -64,6 +64,17 @@ const initGame = () => {
   placeBetButton.innerText = "Bet";
   rightBetContainer.appendChild(placeBetButton);
 
+  // Create a container to display how much credit player has
+  const creditContainer = document.createElement('div');
+  creditContainer.classList.add('credit-container');
+  creditContainer.innerText = "Credit left:";
+  bottomTable.appendChild(creditContainer);
+
+  // Create a display container to display messages to player
+  const displayMsgContainer = document.createElement('div');
+  displayMsgContainer.classList.add('display-msg-container');
+  displayMsgContainer.innerText = "Let's Play!";
+  bottomTable.appendChild(displayMsgContainer);
 
 };
 
