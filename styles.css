@@ -1,7 +1,19 @@
 body {
   background-color: rgb(8, 112, 60);
+  text-align: center;
 }
 
 h1 {
   color: white;
+}
+
+.poker-table {
+  height: fit-content;
+  width: 60%;
+  background-color: rgb(8, 112, 60);
+  margin: 25px auto;
+  padding: 10px;
+  border-style: solid;
+  border-color: gold;
+  border-width: 5px;
 }
