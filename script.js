@@ -26,15 +26,35 @@ const initGame = () => {
     playerHandEl.appendChild(cardEl);
   }
   
-  // Create a section for where the deal button and timer will appear
+  // Create a section for where the deal and discard buttons and timer will appear
   const middleTable = document.createElement('div');
   middleTable.classList.add('middle-table');
   pokerTableEl.appendChild(middleTable);
+
+  const dealButton = document.createElement('button');
+  dealButton.classList.add('deal-button');
+  dealButton.innerText = "Deal";
+  middleTable.appendChild(dealButton);
+
+  const discardButton = document.createElement('button');
+  discardButton.classList.add('discard-button');
+  discardButton.innerText = "Discard";
+  middleTable.appendChild(discardButton);
 
   // Create a section for where the place bet and display message will appear
   const bottomTable = document.createElement('div');
   bottomTable.classList.add('bottom-table');
   pokerTableEl.appendChild(bottomTable);
+
+  // placeBetContainer is further divided into 2 section, left and right
+  const placeBetContainer = document.createElement('div');
+  placeBetContainer.classList.add('bet-container');
+  bottomTable.appendChild(placeBetContainer);
+  
+  const leftBetContainer = document.createElement('div');
+  leftBetContainer.classList.add('left-bet-container');
+  placeBetContainer.appendChild(leftBetContainer);
+
 
 };
 
