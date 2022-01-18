@@ -64,4 +64,13 @@ h1 {
   width: 100px;
   border-style: solid;
   border-color: black;
+  display: inline-block;
+}
+
+.right-bet-container {
+  height: 40px;
+  width: 100px;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
 }
