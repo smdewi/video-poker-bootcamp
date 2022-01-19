@@ -6,7 +6,7 @@ const maxCard = 5;
 
 
 
-const initGame = () => {
+
  
   // Create poker table elements where all game elements will show up
   const pokerTableEl = document.createElement('div');
@@ -76,6 +76,3 @@ const initGame = () => {
   displayMsgContainer.innerText = "Let's Play!";
   bottomTable.appendChild(displayMsgContainer);
 
-};
-
-initGame();
