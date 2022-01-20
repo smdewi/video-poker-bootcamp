@@ -74,11 +74,44 @@ const makeDeck = () => {
   return newDeck;
 };
 
+/** Shuffle the deck of cards */
+// Get a random index ranging from 0 (inclusive) to max (exclusive).
+const getRandomIndex = (max) => Math.floor(Math.random() * max + 1);
+
+// Shuffle an array of cards
+const shuffleCards = (cards) => {
+  // Loop over the card deck array once
+  for (let currentIndex = 0; currentIndex < cards.length; currentIndex += 1) {
+    // Select a random index in the deck
+    const randomIndex = getRandomIndex(cards.length);
+    // Select the card that corresponds to randomIndex
+    const randomCard = cards[randomIndex];
+    // Select the card that corresponds to currentIndex
+    const currentCard = cards[currentIndex];
+    // Swap positions of randomCard and currentCard in the deck
+    cards[currentIndex] = randomCard;
+    cards[randomIndex] = currentCard;
+  }
+  // Return the shuffled deck
+  return cards;
+};
+
+
+// Global variables
+const deck = shuffleCards(makeDeck());
+let playerHand = [];
+
 const initGame = () => {
-  const deck = makeDeck();
-  let playerCard1 = deck.pop();
-  let card1 = playerCard1.name;
-  return card1; 
+  
+  // Take 5 cards from the top of the deck and assign to player
+  playerHand = deck.slice(0,5);
+
+  // Display player's hand
+  // Create new array to store the kept cards and draw more
+  // Calculate hand
+  // Show score
+
+  return; 
 }
 
 initGame();
