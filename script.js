@@ -4,10 +4,7 @@
 // The maximum number of cards a player can have is 5
 const maxCard = 5;
 
-
-
-
- 
+/** This builds all the elements in the poker table */ 
   // Create poker table elements where all game elements will show up
   const pokerTableEl = document.createElement('div');
   pokerTableEl.classList.add('poker-table');
