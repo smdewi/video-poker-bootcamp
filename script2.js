@@ -103,10 +103,14 @@ let playerHand = [];
 
 const initGame = () => {
   
+  // Deal cards when the deal button is hit
   // Take 5 cards from the top of the deck and assign to player
   playerHand = deck.slice(0,5);
 
   // Display player's hand
+  const playerHandEl = document.querySelector('cardEl');
+  
+
   // Create new array to store the kept cards and draw more
   // Calculate hand
   // Show score
