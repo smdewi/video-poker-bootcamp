@@ -1,5 +1,7 @@
 /** Video Poker */
 
+/** Global variables */
+// The maximum number of cards a player can have is 5
 const maxCard = 5;
 
 
@@ -172,12 +174,36 @@ const shuffleCards = (cards) => {
   return cards;
 };
 
-/** Global variables */
-// The maximum number of cards a player can have is 5
 
+// Global variables
 const deck = shuffleCards(makeDeck());
 let playerHand = [];
 
-playerHand = deck.slice(0,5);
+// Helper function to deal cards
+const dealCards = () => {
+  // Take 5 cards from the top of the deck and assign to player
+  playerHand = deck.slice(0,5);
+  
+}
 
+const initGame = () => {
+  
+  // Deal cards when the deal button is hit
+  //add event listener when the deal button is clicked
+  dealButton.addEventListener('click',dealCards());
+
+  
+
+  // Display player's hand
+  
+  
+
+  // Create new array to store the kept cards and draw more
+  // Calculate hand
+  // Show score
+
+  return; 
+}
+
+initGame();
 
