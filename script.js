@@ -39,28 +39,20 @@ const maxCard = 5;
   discardButton.innerText = "Discard";
   middleTable.appendChild(discardButton);
 
-  // Create a section for where the place bet and display message will appear
+  // Create a bottomTable section for where the place bet, player's credit and display message will appear
   const bottomTable = document.createElement('div');
   bottomTable.classList.add('bottom-table');
   pokerTableEl.appendChild(bottomTable);
 
-  // placeBetContainer is further divided into 2 section, left and right
-  const placeBetContainer = document.createElement('div');
-  placeBetContainer.classList.add('bet-container');
-  bottomTable.appendChild(placeBetContainer);
+  // placeBetContainer 
+  // const placeBetContainer = document.createElement('div');
+  // placeBetContainer.classList.add('bet-container');
+  // bottomTable.appendChild(placeBetContainer);
   
-  const leftBetContainer = document.createElement('div');
-  leftBetContainer.classList.add('left-bet-container');
-  placeBetContainer.appendChild(leftBetContainer);
-
-  const rightBetContainer = document.createElement('div');
-  rightBetContainer.classList.add('right-bet-container');
-  placeBetContainer.appendChild(rightBetContainer);
-
-  const placeBetButton = document.createElement('button');
-  placeBetButton.classList.add('bet-button');
-  placeBetButton.innerText = "Bet";
-  rightBetContainer.appendChild(placeBetButton);
+  // const placeBetButton = document.createElement('button');
+  // placeBetButton.classList.add('bet-button');
+  // placeBetButton.innerText = "Bet";
+  // placeBetContainer.appendChild(placeBetButton);
 
   // Create a container to display how much credit player has
   const creditContainer = document.createElement('div');
@@ -81,7 +73,7 @@ const makeDeck = () => {
   // Initialize an empty deck array
   const newDeck = [];
 
-  // There are 4 suits: ❤ ♦ ♣ ♠
+  // There are 4 suits: ♥ ♦ ♣ ♠
   const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 
   // Create the deck by looping over the suits array
@@ -95,7 +87,7 @@ const makeDeck = () => {
 
     // Assign suitSymbol to match current suit
     if (currentSuit === 'hearts') {
-      currentSymbol = '❤';
+      currentSymbol = '♥';
     }
     else if (currentSuit === 'diamonds') {
       currentSymbol = '♦';
@@ -110,7 +102,7 @@ const makeDeck = () => {
     // If suits is either ❤ or ♦, assign cardColor to be red
     // This is used for card display
     let cardColor;
-    if (currentSymbol === '❤' || currentSymbol === '♦') {
+    if (currentSymbol === '♥' || currentSymbol === '♦') {
       cardColor = 'red';  
     }
     else {
@@ -215,22 +207,21 @@ const dealCards = () => {
 const initGame = () => {
   
   // Deal cards when the deal button is hit
-  //add event listener when the deal button is clicked
   dealButton.addEventListener('click',(event) =>{
     // console.log(dealButton);
     dealCards();
     console.log(playerHand);
+    
+    // Show player's hand - 5 cards
     displayCards(playerHand);
   });
 
-  
-
-  
-  
-  
-
   // Create new array to store the kept cards and draw more
+
+
   // Calculate hand
+  
+
   // Show score
 
   return; 
