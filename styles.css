@@ -118,15 +118,15 @@ h1 {
   height: 50px;
   width: 100px;
   margin: 0 25px;
-  border-style: solid;
-  border-color: gold;
+  /* border-style: solid; */
+  /* border-color: gold; */
 }
 
 .display-msg-container {
   height: 50px;
   width: 200px;
   margin: 0 25px;
-  border-style: solid;
-  border-color: gold;
+  /* border-style: solid;
+  border-color: gold; */
   display: inline-block;
 }
