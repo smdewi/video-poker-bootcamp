@@ -108,7 +108,7 @@ const initGame = () => {
   playerHand = deck.slice(0,5);
 
   // Display player's hand
-  const playerHandEl = document.querySelector('cardEl');
+  
   
 
   // Create new array to store the kept cards and draw more
