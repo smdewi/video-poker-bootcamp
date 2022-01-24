@@ -67,26 +67,28 @@ h1 {
 .middle-table {
   height: 40px;
   width: 75%;
-  background-color: white;
+  background-color: rgb(8, 112, 60) e;
   margin: 10px auto;
 }
 
 .bottom-table {
-  height: 40px;
+  height: fit-content;
   width: 75%;
-  background-color: white;
+  background-color: rgb(8, 112, 60);
   margin: 10px auto;
+  display: inline-block;
+  color: white;
 }
 
 .deal-button {
-  margin: auto;
+  margin: auto 25px;
   height: fit-content;
   width: fit-content;
   padding: 10px;
   border-radius: 25%;
 }
 
-.left-bet-container {
+/* .left-bet-container {
   height: 40px;
   width: 100px;
   border-style: solid;
@@ -100,28 +102,30 @@ h1 {
   border-style: solid;
   border-color: black;
   display: inline-block;
-}
+} */
 
-.bet-button {
+/* .bet-button {
   margin: auto;
   height: fit-content;
   width: fit-content;
   padding: 10px;
   border-radius: 50%;
   display: inline-block;
-}
+} */
 
 .credit-container {
   display: inline-block;
   height: 50px;
-  width: 50px;
+  width: 100px;
+  margin: 0 25px;
   border-style: solid;
-  border-color: white;
+  border-color: gold;
 }
 
 .display-msg-container {
   height: 50px;
-  width: 50px;
+  width: 100px;
+  margin: 0 25px;
   border-style: solid;
   border-color: gold;
   border-width: 5px;
