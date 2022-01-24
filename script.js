@@ -174,6 +174,7 @@ const shuffleCards = (cards) => {
 const deck = shuffleCards(makeDeck());
 let playerHand = [];
 let keptHand = [];
+let rankScore = 0;
 
 // Display cards
 const displayCards = (cardInfo) => {
@@ -216,10 +217,21 @@ const dealCards = () => {
   return playerHand;
 };
 
-// const cardClicked = () => {
-//   console.log(`card clicked`);
-// };
+// Helper funtion to calculateHand score
+const calcHandScore = (hand) => {
+  //Initialize value
+  let isStraightFlush = false;
+  let isFourOfKind = false;
+  let isFullHouse = false;
+  let isFlush = false; 
+  let isStraight = false;
+  let isThreeOfKind = false;
+  let isTwoPair = false;
+  let isPairJQKA = false;
+  
+};
 
+/** This is the Start of the Game */
 const initGame = () => {
   
   // Deal and display cards when the deal button is hit
@@ -245,7 +257,7 @@ const initGame = () => {
   });
   
   // Calculate hand
-  
+  rankScore = calcHandScore(keptHand);
 
   // Show score
 
