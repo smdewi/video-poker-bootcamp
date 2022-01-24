@@ -4,6 +4,8 @@
 // The maximum number of cards a player can have is 5
 const maxCard = 5;
 
+// Player starts with $100 credit
+let credit = 100;
 
 /** This builds all the elements in the poker table */ 
   // Create poker table elements where all game elements will show up
@@ -57,7 +59,7 @@ const maxCard = 5;
   // Create a container to display how much credit player has
   const creditContainer = document.createElement('div');
   creditContainer.classList.add('credit-container');
-  creditContainer.innerText = "Credit left:";
+  creditContainer.innerText = `Credit: $ ${credit}`;
   bottomTable.appendChild(creditContainer);
 
   // Create a display container to display messages to player
@@ -214,6 +216,8 @@ const initGame = () => {
     
     // Show player's hand - 5 cards
     displayCards(playerHand);
+
+    displayMsgContainer.innerText = "Click the cards you want to keep";
   });
 
   // Create new array to store the kept cards and draw more
