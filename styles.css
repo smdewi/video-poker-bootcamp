@@ -37,6 +37,33 @@ h1 {
   vertical-align: top;
 }
 
+.card {
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 5px;
+  display: inline-block;
+  height: 75px;
+  width: 50px;
+  vertical-align: top;
+}
+
+.suit {
+  margin: 5px;
+  font-size: 20px;
+}
+
+.name {
+  margin: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.red {
+  color: red;
+}
+
 .middle-table {
   height: 40px;
   width: 75%;
