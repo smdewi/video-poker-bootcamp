@@ -29,7 +29,7 @@ h1 {
 .cardEl {
   padding: 10px;
   margin: 10px;
-  background-image: linear-gradient(#08bef5, #bcd5f6);
+  background-image: linear-gradient(#14f6ab, #e9f088);
   border-radius: 5px;
   display: inline-block;
   height: 75px;
@@ -124,10 +124,9 @@ h1 {
 
 .display-msg-container {
   height: 50px;
-  width: 100px;
+  width: 200px;
   margin: 0 25px;
   border-style: solid;
   border-color: gold;
-  border-width: 5px;
   display: inline-block;
 }
