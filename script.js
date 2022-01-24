@@ -244,8 +244,6 @@ const initGame = () => {
     displayCards(keptHand);
   });
   
-  
-
   // Calculate hand
   
 
