@@ -89,22 +89,22 @@ const makeDeck = () => {
 
     // Assign suitSymbol to match current suit
     if (currentSuit === 'hearts') {
-      currentSymbol = '♥';
+      currentSymbol = '♥️';
     }
     else if (currentSuit === 'diamonds') {
-      currentSymbol = '♦';
+      currentSymbol = '♦️';
     }
     else if (currentSuit === 'clubs') {
-      currentSymbol = '♣';
+      currentSymbol = '♣️';
     }
     else {
-      currentSymbol = '♠';
+      currentSymbol = '♠️';
     }
 
     // If suits is either ❤ or ♦, assign cardColor to be red
     // This is used for card display
     let cardColor;
-    if (currentSymbol === '♥' || currentSymbol === '♦') {
+    if (currentSymbol === '♥️' || currentSymbol === '♦️') {
       cardColor = 'red';  
     }
     else {
@@ -208,7 +208,7 @@ const dealCards = () => {
 
 const initGame = () => {
   
-  // Deal cards when the deal button is hit
+  // Deal and display cards when the deal button is hit
   dealButton.addEventListener('click',(event) =>{
     // console.log(dealButton);
     dealCards();
