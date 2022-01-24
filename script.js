@@ -173,6 +173,7 @@ const shuffleCards = (cards) => {
 // Global variables
 const deck = shuffleCards(makeDeck());
 let playerHand = [];
+let keptHand = [];
 
 // Display cards
 const displayCards = (cardInfo) => {
@@ -193,6 +194,15 @@ const displayCards = (cardInfo) => {
     playerHandEl.appendChild(cardEl);
     cardEl.appendChild(name);
     cardEl.appendChild(suit);
+
+    cardEl.addEventListener('click', (event) => {
+      console.log(`clicked ${i}`);
+
+      // Store clicked cards in keptHand array
+      keptHand.push(cardInfo[i]);
+
+    })
+
   }
   
   
@@ -206,10 +216,14 @@ const dealCards = () => {
   return playerHand;
 };
 
+// const cardClicked = () => {
+//   console.log(`card clicked`);
+// };
+
 const initGame = () => {
   
   // Deal and display cards when the deal button is hit
-  dealButton.addEventListener('click',(event) =>{
+  dealButton.addEventListener('click',(event) => {
     // console.log(dealButton);
     dealCards();
     console.log(playerHand);
@@ -217,11 +231,20 @@ const initGame = () => {
     // Show player's hand - 5 cards
     displayCards(playerHand);
 
-    displayMsgContainer.innerText = "Click the cards you want to keep";
+    displayMsgContainer.innerText = "Click the cards you want to keep. Then click Discard.";
   });
 
-  // Create new array to store the kept cards and draw more
+  // Discard and draw more cards
+  discardButton.addEventListener('click', (event) => {
+    let numOfDraw = maxCard - keptHand.length;
+    for (let i = 0; i < numOfDraw; i += 1) {
+      keptHand.push(deck.pop());
+    }
 
+    displayCards(keptHand);
+  });
+  
+  
 
   // Calculate hand
   

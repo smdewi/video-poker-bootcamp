@@ -88,6 +88,14 @@ h1 {
   border-radius: 25%;
 }
 
+.discard-button {
+  margin: auto 25px;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 25%;
+}
+
 /* .left-bet-container {
   height: 40px;
   width: 100px;
