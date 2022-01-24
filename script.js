@@ -19,7 +19,7 @@ const maxCard = 5;
   // Create card element where the player's cards will be shown
   // Use a loop to create 5 card elements
   for (let i = 0; i < maxCard; i += 1) {
-    const cardEl = document.createElement('div');
+    let cardEl = document.createElement('div');
     cardEl.classList.add('cardEl');
     playerHandEl.appendChild(cardEl);
   }
@@ -138,7 +138,8 @@ const makeDeck = () => {
       // Create an object of a new card with the current name, suit, rank, and color for display
       const cardInfo = {
         name: cardName,
-        suit: currentSymbol,
+        suit: currentSuit,
+        suitSymbol: currentSymbol,
         rank: rankCounter,
         color: cardColor,
       };
@@ -179,22 +180,52 @@ const shuffleCards = (cards) => {
 const deck = shuffleCards(makeDeck());
 let playerHand = [];
 
+// Display cards
+const displayCards = (cardInfo) => {
+  playerHandEl.innerHTML = "";
+
+  for (let i = 0; i < cardInfo.length; i += 1) {
+    let cardEl = document.createElement('div');
+    cardEl.classList.add('card');
+
+    const suit = document.createElement('div');
+    suit.classList.add('suit',cardInfo[i].color);
+    suit.innerText = cardInfo[i].suitSymbol; 
+
+    const name = document.createElement('div');
+    name.classList.add(cardInfo[i].name, cardInfo[i].color);
+    name.innerText = cardInfo[i].name;
+
+    playerHandEl.appendChild(cardEl);
+    cardEl.appendChild(name);
+    cardEl.appendChild(suit);
+  }
+  
+  
+};
+
 // Helper function to deal cards
 const dealCards = () => {
   // Take 5 cards from the top of the deck and assign to player
   playerHand = deck.slice(0,5);
-  
-}
+
+  return playerHand;
+};
 
 const initGame = () => {
   
   // Deal cards when the deal button is hit
   //add event listener when the deal button is clicked
-  dealButton.addEventListener('click',dealCards());
+  dealButton.addEventListener('click',(event) =>{
+    // console.log(dealButton);
+    dealCards();
+    console.log(playerHand);
+    displayCards(playerHand);
+  });
 
   
 
-  // Display player's hand
+  
   
   
 
