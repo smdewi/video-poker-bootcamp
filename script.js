@@ -397,13 +397,13 @@ const calcHandScore = (hand) => {
 /** This is the Start of the Game */
 const initGame = () => {
   
-  // deck = shuffleCards(makeDeck());
-
   // Deal and display cards when the deal button is hit
   dealButton.addEventListener('click',(event) => {
 
+    // Create a deck of card and shuffle it
     deck = shuffleCards(makeDeck());
     
+    // Deal 5 cards to player
     dealCards();
     console.log(playerHand);
 
@@ -418,31 +418,26 @@ const initGame = () => {
 
   // Discard and draw more cards
   discardButton.addEventListener('click', (event) => {
+    
+    // Draw new cards and push them into keptHand array
     let numOfDraw = maxCard - keptHand.length;
     for (let i = 0; i < numOfDraw; i += 1) {
       keptHand.push(deck.pop());
     }
 
+    // Display the keptHand array, this is what will be used for calculating hand score
     displayCards(keptHand);
 
+    // Pass the keptHand array into the calcHandScore and store the value in handScore
     handScore = calcHandScore(keptHand);
 
+    // Show and update credit based on handScore
     credit = credit + handScore;
     creditContainer.innerText = `Credit: $ ${credit}`;
 
   });
   
-  
-
-
-  // Calculate hand
-  // displayCards(keptHand);
-  // handScore = calcHandScore(keptHand);
-
-  // Show score and update credit
-  // credit = credit + handScore;
-  // creditContainer.innerText = `Credit: $ ${credit}`;
-  
+    
 } // end of initGame()
 
 initGame();
