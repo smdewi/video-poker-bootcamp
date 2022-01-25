@@ -70,3 +70,5 @@ const loseHand = [
   {name: '10', suit: 'spades', suitSymbol: '♠', rank: 10, color: 'black',},
   {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
 ];
+
+const testHand = [straightFlushHand, fourOfKindHand, fullHouseHand, flushHand, straightHand, threeOfKindHand, twoPairHand, pairJQKAHand, loseHand];
