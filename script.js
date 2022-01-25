@@ -64,11 +64,13 @@ let handScore = 0;
   middleTable.classList.add('middle-table');
   pokerTableEl.appendChild(middleTable);
 
+  // Create deal button
   const dealButton = document.createElement('button');
   dealButton.classList.add('deal-button');
   dealButton.innerText = "Deal";
   middleTable.appendChild(dealButton);
 
+  // Create discard button
   const discardButton = document.createElement('button');
   discardButton.classList.add('discard-button');
   discardButton.innerText = "Discard";
@@ -78,16 +80,6 @@ let handScore = 0;
   const bottomTable = document.createElement('div');
   bottomTable.classList.add('bottom-table');
   pokerTableEl.appendChild(bottomTable);
-
-  // placeBetContainer 
-  // const placeBetContainer = document.createElement('div');
-  // placeBetContainer.classList.add('bet-container');
-  // bottomTable.appendChild(placeBetContainer);
-  
-  // const placeBetButton = document.createElement('button');
-  // placeBetButton.classList.add('bet-button');
-  // placeBetButton.innerText = "Bet";
-  // placeBetContainer.appendChild(placeBetButton);
 
   // Create a container to display how much credit player has
   const creditContainer = document.createElement('div');
