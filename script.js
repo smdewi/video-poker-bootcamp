@@ -1,10 +1,10 @@
 /** Video Poker */
 // Test hands
-const straightHand = [
-  {name: '3', suit: 'hearts', suitSymbol: '❤', rank: 3, color: 'red',},
-  {name: '2', suit: 'diamonds', suitSymbol: '♦', rank: 2, color: 'red',},
-  {name: '5', suit: 'clubs', suitSymbol: '♣', rank: 5, color: 'black',},
-  {name: '4', suit: 'spades', suitSymbol: '♠', rank: 4, color: 'black',},
+const loseHand = [
+  {name: '6', suit: 'hearts', suitSymbol: '❤', rank: 6, color: 'red',},
+  {name: '8', suit: 'diamonds', suitSymbol: '♦', rank: 8, color: 'red',},
+  {name: '7', suit: 'clubs', suitSymbol: '♣', rank: 7, color: 'black',},
+  {name: '10', suit: 'spades', suitSymbol: '♠', rank: 10, color: 'black',},
   {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
 ];
 
@@ -305,6 +305,7 @@ const calcHandScore = (hand) => {
   //initialize
   let countPair = 0;
   let cardName;
+  let faceCard;
 
   // Go over the hand and count how many times a card appear
   for (let i=0; i < hand.length; i +=1) {
@@ -334,6 +335,7 @@ const calcHandScore = (hand) => {
     countPair += 1;
     if (cardName === 'J'|| cardName === 'Q' || cardName === 'K' || cardName === 'A') {
       isPairJQKA = true;
+      faceCard = cardName;
     }
     
   }
@@ -362,6 +364,22 @@ const calcHandScore = (hand) => {
   else if (isStraight) {
     handScore = 4;
     displayMsgContainer.innerText = "You've got a straight!";
+  }
+  else if (isThreeOfKind) {
+    handScore = 3;
+    displayMsgContainer.innerText = "You've got a Three of a Kind!";
+  }
+  else if (isPair && countPair === 2) {
+    handScore = 2;
+    displayMsgContainer.innerText = "You've got 2 Pairs!";
+  }
+  else if (isPair && isPairJQKA) {
+    handScore = 1;
+    displayMsgContainer.innerText = `You've got a Pair of ${faceCard}`;
+  }
+  else {
+    handScore = -10;
+    displayMsgContainer.innerText = `Sorry, you lose! Better luck next time`;
   }
 
   return handScore; // what calcHand returns
@@ -396,13 +414,14 @@ const initGame = () => {
   });
   
   // Calculate hand
-  displayCards(straightHand);
-  handScore = calcHandScore(straightHand);
+  displayCards(loseHand);
+  handScore = calcHandScore(loseHand);
 
   // Show score and update credit
-
-  return; 
-}
+  credit = credit + handScore;
+  creditContainer.innerText = `Credit: $ ${credit}`;
+  
+} // end of initGame()
 
 initGame();
 
