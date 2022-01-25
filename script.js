@@ -56,7 +56,7 @@ let handScore = 0;
 
   // Create deal button
   const dealButton = document.createElement('button');
-  dealButton.classList.add('deal-button');
+  dealButton.setAttribute("id", "deal-button");
   dealButton.innerText = "Deal";
   middleTable.appendChild(dealButton);
 
@@ -382,6 +382,7 @@ const calcHandScore = (hand) => {
 
 };
 
+/************************************************************************ */
 /** This is the Start of the Game */
 const initGame = () => {
   
@@ -402,7 +403,8 @@ const initGame = () => {
     displayCards(playerHand);
 
     displayMsgContainer.innerText = "Click the cards you want to keep. Then click Discard.";
-  });
+
+    });
 
   // Discard and draw more cards
   discardButton.addEventListener('click', (event) => {
