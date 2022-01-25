@@ -17,6 +17,18 @@ let keptHand = [];
 // the rank of the hand is initialized as 0
 let rankScore = 0;
 
+/** Poker Hand Rank Scoring Guide */
+// Royal Flush = 250
+// Straight Flush = 50
+// Four of a kind = 25
+// Full House = 9
+// Flush = 6
+// Straight = 4
+// Three of a kind = 3
+// Two Pairs = 2
+// Pair Jack or better = 1
+
+
 /** This builds all the elements in the poker table */ 
   // Create poker table elements where all game elements will show up
   const pokerTableEl = document.createElement('div');
