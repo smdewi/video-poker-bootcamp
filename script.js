@@ -7,6 +7,16 @@ const maxCard = 5;
 // Player starts with $100 credit
 let credit = 100;
 
+// Deck store the deck of shuffled deck of cards for game play
+const deck = shuffleCards(makeDeck());
+
+// playerHand and keptHand are initialized as an empty array at the beginning
+let playerHand = [];
+let keptHand = [];
+
+// the rank of the hand is initialized as 0
+let rankScore = 0;
+
 /** This builds all the elements in the poker table */ 
   // Create poker table elements where all game elements will show up
   const pokerTableEl = document.createElement('div');
@@ -170,11 +180,7 @@ const shuffleCards = (cards) => {
 };
 
 
-// Global variables
-const deck = shuffleCards(makeDeck());
-let playerHand = [];
-let keptHand = [];
-let rankScore = 0;
+
 
 // Display cards
 const displayCards = (cardInfo) => {
