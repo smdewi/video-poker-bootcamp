@@ -1,4 +1,14 @@
 /** Video Poker */
+// Test hands
+const straightFlushHand = [
+  {name: '3', suit: 'hearts', suitSymbol: '❤', rank: 3, color: 'red',},
+  {name: '2', suit: 'hearts', suitSymbol: '❤', rank: 2, color: 'red',},
+  {name: '5', suit: 'hearts', suitSymbol: '❤', rank: 5, color: 'red',},
+  {name: '4', suit: 'hearts', suitSymbol: '❤', rank: 4, color: 'red',},
+  {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
+];
+
+
 
 /** Global variables */
 // The maximum number of cards a player can have is 5
@@ -14,8 +24,8 @@ const deck = shuffleCards(makeDeck());
 let playerHand = [];
 let keptHand = [];
 
-// the rank of the hand is initialized as 0
-let rankScore = 0;
+// the handScore is initialized as 0
+let handScore = 0;
 
 /** Poker Hand Rank Scoring Guide */
 // Royal Flush = 250
@@ -236,6 +246,7 @@ const dealCards = () => {
 };
 
 // Helper funtion to calculateHand score
+// This function returns handScore
 const calcHandScore = (hand) => {
   //Initialize value
   let isStraightFlush = false;
@@ -247,6 +258,18 @@ const calcHandScore = (hand) => {
   let isTwoPair = false;
   let isPairJQKA = false;
   
+  //Check for flush
+  let isHeartFlush = hand.every((hand) => {
+    return (hand.suit === 'hearts');
+  });
+
+  if (isHeartFlush) {
+    isFlush = true;
+    handScore = 6;
+  }
+
+  return handScore;
+
 };
 
 /** This is the Start of the Game */
@@ -275,7 +298,7 @@ const initGame = () => {
   });
   
   // Calculate hand
-  rankScore = calcHandScore(keptHand);
+  handScore = calcHandScore(straightFlushHand);
 
   // Show score
 
