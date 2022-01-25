@@ -1,14 +1,4 @@
 /** Video Poker */
-// Test hands
-const straightHand = [
-  {name: '3', suit: 'hearts', suitSymbol: '❤', rank: 3, color: 'red',},
-  {name: '2', suit: 'diamonds', suitSymbol: '♦', rank: 2, color: 'red',},
-  {name: '5', suit: 'clubs', suitSymbol: '♣', rank: 5, color: 'black',},
-  {name: '4', suit: 'spades', suitSymbol: '♠', rank: 4, color: 'black',},
-  {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
-];
-
-
 
 /** Global variables */
 // The maximum number of cards a player can have is 5
@@ -39,7 +29,7 @@ let handScore = 0;
 // Two Pairs = 2
 // Pair Jack or better = 1
 
-
+/************************************************************************** */
 /** This builds all the elements in the poker table */ 
   // Create poker table elements where all game elements will show up
   const pokerTableEl = document.createElement('div');
@@ -59,7 +49,7 @@ let handScore = 0;
     playerHandEl.appendChild(cardEl);
   }
   
-  // Create a section for where the deal and discard buttons and timer will appear
+  // Create a section for where the deal and discard buttons will appear
   const middleTable = document.createElement('div');
   middleTable.classList.add('middle-table');
   pokerTableEl.appendChild(middleTable);
@@ -436,11 +426,20 @@ const initGame = () => {
   });
 
   // Tutorial mode will show a fixed hand
-  tutorialButton.addEventListener('click', (event) => {
-    displayCards(straightHand);
-    handScore = calcHandScore(straightHand);
+  // Using the testHand from testHandscript.js the tutorial will loop through
+  // and display the cards from testHand
+  for (let i = 0; i < testHand.length; i += 1){
+    tutorialButton.addEventListener('click', (event) => {
     
-  });
+      let k = i;
+      setTimeout(function(){
+        displayCards(testHand[i]);
+        handScore = calcHandScore(testHand[i]);
+      }, 5000*(k+1));
+            
+    });
+  }
+  
   
     
 } // end of initGame()
