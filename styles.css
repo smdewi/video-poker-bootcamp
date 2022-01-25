@@ -48,6 +48,17 @@ h1 {
   vertical-align: top;
 }
 
+.card:active {
+  padding: 10px;
+  margin: 10px;
+  background-color: green;
+  border-radius: 5px;
+  display: inline-block;
+  height: 75px;
+  width: 50px;
+  vertical-align: top;
+}
+
 .suit {
   margin: 5px;
   font-size: 20px;
