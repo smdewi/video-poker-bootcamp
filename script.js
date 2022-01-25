@@ -1,10 +1,10 @@
 /** Video Poker */
 // Test hands
-const straightFlushHand = [
+const straightHand = [
   {name: '3', suit: 'hearts', suitSymbol: '❤', rank: 3, color: 'red',},
-  {name: '2', suit: 'hearts', suitSymbol: '❤', rank: 2, color: 'red',},
-  {name: '5', suit: 'hearts', suitSymbol: '❤', rank: 5, color: 'red',},
-  {name: '4', suit: 'hearts', suitSymbol: '❤', rank: 4, color: 'red',},
+  {name: '2', suit: 'diamonds', suitSymbol: '♦', rank: 2, color: 'red',},
+  {name: '5', suit: 'clubs', suitSymbol: '♣', rank: 5, color: 'black',},
+  {name: '4', suit: 'spades', suitSymbol: '♠', rank: 4, color: 'black',},
   {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
 ];
 
@@ -18,7 +18,7 @@ const maxCard = 5;
 let credit = 100;
 
 // Deck store the deck of shuffled deck of cards for game play
-const deck = shuffleCards(makeDeck());
+let deck = [];
 
 // playerHand and keptHand are initialized as an empty array at the beginning
 let playerHand = [];
@@ -246,6 +246,9 @@ const dealCards = () => {
 };
 
 // Helper funtion to calculateHand score
+
+
+
 // This function returns handScore
 const calcHandScore = (hand) => {
   //Initialize value
@@ -256,25 +259,120 @@ const calcHandScore = (hand) => {
   let isStraight = false;
   let isThreeOfKind = false;
   let isTwoPair = false;
+  let isPair = false;
   let isPairJQKA = false;
   
+  //Check for straight
+  //Sort card array in ascending order
+  let sortedCards = hand.sort((a,b) => {
+    return a.rank - b.rank;
+  });
+  console.log(sortedCards);
+
+  let diff = 0;
+  for (let i = 0; i < 4; i += 1){
+    diff += (sortedCards[i+1].rank-sortedCards[i].rank);
+    console.log(diff);
+  }
+
+  if (diff === 4) {
+    isStraight = true;
+  }
+
   //Check for flush
   let isHeartFlush = hand.every((hand) => {
     return (hand.suit === 'hearts');
   });
+  let isDiamondFlush = hand.every((hand) => {
+    return (hand.suit === 'diamonds');
+  });
+  let isClubFlush = hand.every((hand) => {
+    return (hand.suit === 'clubs');
+  });
+  let isSpadeFlush = hand.every((hand) => {
+    return (hand.suit === 'spades');
+  });
 
-  if (isHeartFlush) {
+  // Hand is a flush when all the cards in hand array is of the same suit
+  if (isHeartFlush || isDiamondFlush || isClubFlush || isSpadeFlush) {
     isFlush = true;
-    handScore = 6;
   }
 
-  return handScore;
+  // Check how many pairs are in the hand
+  // create an object with name of card as key and the cardNameTally as the value
+  const cardNameTally = {};
+
+  //initialize
+  let countPair = 0;
+  let cardName;
+
+  // Go over the hand and count how many times a card appear
+  for (let i=0; i < hand.length; i +=1) {
+  cardName = hand[i].name;
+  console.log(cardName);
+  if (cardName in cardNameTally) {
+    cardNameTally[cardName] +=1;
+  }
+  else {
+    cardNameTally[cardName] = 1;
+    }
+  }
+
+  for (cardName in cardNameTally) {
+  console.log(`There are ${cardNameTally[cardName]} ${cardName}s in the hand`);
+  if (cardNameTally[cardName] === 4) {
+    console.log(`4 of a kind`);
+    isFourOfKind = true;
+  }
+  if (cardNameTally[cardName] === 3) {
+    console.log(`3 of a kind`);
+    isThreeOfKind = true;
+  }
+  if (cardNameTally[cardName] === 2) {
+    console.log(`Pair`);
+    isPair = true;
+    countPair += 1;
+    if (cardName === 'J'|| cardName === 'Q' || cardName === 'K' || cardName === 'A') {
+      isPairJQKA = true;
+    }
+    
+  }
+}
+
+
+  // Straight Flush
+  if (isStraight && isFlush) {
+    isStraightFlush = true;
+    handScore = 50;
+    displayMsgContainer.innerText = "You've got a Straight Flush!";
+  }
+  else if (isFourOfKind) {
+    handScore = 25;
+    displayMsgContainer.innerText = "You've got a Four of a Kind!";
+  }
+  else if (isThreeOfKind && isPair) {
+    isFullHouse = true;
+    handScore = 9;
+    displayMsgContainer.innerText = "You've got a Full House!";
+  }
+  else if (isFlush) {
+    handScore = 6;
+    displayMsgContainer.innerText = "You've got a Flush!";
+  }
+  else if (isStraight) {
+    handScore = 4;
+    displayMsgContainer.innerText = "You've got a straight!";
+  }
+
+  return handScore; // what calcHand returns
 
 };
 
 /** This is the Start of the Game */
 const initGame = () => {
   
+  deck = shuffleCards(makeDeck());
+
   // Deal and display cards when the deal button is hit
   dealButton.addEventListener('click',(event) => {
     // console.log(dealButton);
@@ -298,9 +396,10 @@ const initGame = () => {
   });
   
   // Calculate hand
-  handScore = calcHandScore(straightFlushHand);
+  displayCards(straightHand);
+  handScore = calcHandScore(straightHand);
 
-  // Show score
+  // Show score and update credit
 
   return; 
 }
