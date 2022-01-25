@@ -91,6 +91,20 @@ h1 {
   color: white;
 }
 
+.tutorial-button {
+  background-image: "poker-chip.png";
+  border-radius: 50%;
+  border-color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 1em;
+  background-color: rgb(8, 112, 60);
+  color: whitesmoke;
+  font-weight: bolder;
+  font-family: sans-serif;
+  font-size: medium;
+}
+
 .deal-button {
   margin: auto 25px;
   height: fit-content;
