@@ -76,10 +76,16 @@ let handScore = 0;
   discardButton.innerText = "Discard";
   middleTable.appendChild(discardButton);
 
-  // Create a bottomTable section for where the place bet, player's credit and display message will appear
+  // Create a bottomTable section for player's credit and display message will appear
   const bottomTable = document.createElement('div');
   bottomTable.classList.add('bottom-table');
   pokerTableEl.appendChild(bottomTable);
+
+  // Create a tutorial button
+  const tutorialButton = document.createElement('button');
+  tutorialButton.classList.add('tutorial-button');
+  tutorialButton.innerText = "Tutorial";
+  bottomTable.appendChild(tutorialButton);
 
   // Create a container to display how much credit player has
   const creditContainer = document.createElement('div');
@@ -427,6 +433,13 @@ const initGame = () => {
     credit = credit + handScore;
     creditContainer.innerText = `Credit: $ ${credit}`;
 
+  });
+
+  // Tutorial mode will show a fixed hand
+  tutorialButton.addEventListener('click', (event) => {
+    displayCards(straightHand);
+    handScore = calcHandScore(straightHand);
+    
   });
   
     
