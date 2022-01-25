@@ -1,10 +1,10 @@
 /** Video Poker */
 // Test hands
-const loseHand = [
-  {name: '6', suit: 'hearts', suitSymbol: '❤', rank: 6, color: 'red',},
-  {name: '8', suit: 'diamonds', suitSymbol: '♦', rank: 8, color: 'red',},
-  {name: '7', suit: 'clubs', suitSymbol: '♣', rank: 7, color: 'black',},
-  {name: '10', suit: 'spades', suitSymbol: '♠', rank: 10, color: 'black',},
+const straightHand = [
+  {name: '3', suit: 'hearts', suitSymbol: '❤', rank: 3, color: 'red',},
+  {name: '2', suit: 'diamonds', suitSymbol: '♦', rank: 2, color: 'red',},
+  {name: '5', suit: 'clubs', suitSymbol: '♣', rank: 5, color: 'black',},
+  {name: '4', suit: 'spades', suitSymbol: '♠', rank: 4, color: 'black',},
   {name: 'A', suit: 'hearts', suitSymbol: '❤', rank: 1, color: 'red',},
 ];
 
@@ -23,6 +23,7 @@ let deck = [];
 // playerHand and keptHand are initialized as an empty array at the beginning
 let playerHand = [];
 let keptHand = [];
+let sortedCards = [];
 
 // the handScore is initialized as 0
 let handScore = 0;
@@ -264,17 +265,23 @@ const calcHandScore = (hand) => {
   
   //Check for straight
   //Sort card array in ascending order
-  let sortedCards = hand.sort((a,b) => {
+  sortedCards = hand.sort((a,b) => {
     return a.rank - b.rank;
   });
   console.log(sortedCards);
 
   let diff = 0;
   for (let i = 0; i < 4; i += 1){
-    diff += (sortedCards[i+1].rank-sortedCards[i].rank);
-    console.log(diff);
-  }
+    // diff += (sortedCards[i+1].rank-sortedCards[i].rank);
+    // console.log(diff);
 
+    //check if the difference between current card and next card = 1
+    if ((sortedCards[i+1].rank - sortedCards[i].rank) === 1) {
+      diff += 1;
+    }
+
+  }
+  // If all 5 cards are in sequence, diff should sum up to 4
   if (diff === 4) {
     isStraight = true;
   }
@@ -370,6 +377,7 @@ const calcHandScore = (hand) => {
     displayMsgContainer.innerText = "You've got a Three of a Kind!";
   }
   else if (isPair && countPair === 2) {
+    isTwoPair = true;
     handScore = 2;
     displayMsgContainer.innerText = "You've got 2 Pairs!";
   }
@@ -389,13 +397,18 @@ const calcHandScore = (hand) => {
 /** This is the Start of the Game */
 const initGame = () => {
   
-  deck = shuffleCards(makeDeck());
+  // deck = shuffleCards(makeDeck());
 
   // Deal and display cards when the deal button is hit
   dealButton.addEventListener('click',(event) => {
-    // console.log(dealButton);
+
+    deck = shuffleCards(makeDeck());
+    
     dealCards();
     console.log(playerHand);
+
+    //Initialize/empty out keptHand
+    keptHand = [];
     
     // Show player's hand - 5 cards
     displayCards(playerHand);
@@ -411,15 +424,24 @@ const initGame = () => {
     }
 
     displayCards(keptHand);
+
+    handScore = calcHandScore(keptHand);
+
+    credit = credit + handScore;
+    creditContainer.innerText = `Credit: $ ${credit}`;
+
   });
   
+  
+
+
   // Calculate hand
-  displayCards(loseHand);
-  handScore = calcHandScore(loseHand);
+  // displayCards(keptHand);
+  // handScore = calcHandScore(keptHand);
 
   // Show score and update credit
-  credit = credit + handScore;
-  creditContainer.innerText = `Credit: $ ${credit}`;
+  // credit = credit + handScore;
+  // creditContainer.innerText = `Credit: $ ${credit}`;
   
 } // end of initGame()
 
