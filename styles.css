@@ -92,7 +92,7 @@ h1 {
 }
 
 .tutorial-button {
-  background-image: "poker-chip.png";
+  /* background-image: "//poker-chip.png"; */
   border-radius: 50%;
   border-color: white;
   width: fit-content;
