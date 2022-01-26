@@ -61,12 +61,13 @@ h1 {
 
 .suit {
   margin: 5px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .name {
   margin: 5px;
   font-size: 24px;
+  text-align: left;
   font-weight: bold;
   font-family: sans-serif;
 }
@@ -88,6 +89,9 @@ h1 {
   background-color: rgb(8, 112, 60);
   margin: 10px auto;
   display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   color: white;
 }
 
